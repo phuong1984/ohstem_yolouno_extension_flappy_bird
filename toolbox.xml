@@ -1,0 +1,12 @@
+<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+  <category name="FLAPPY BIRD" colour="#5d2c91" icon="tv">
+    <sep gap="10"></sep>
+    <label text="Khởi tạo" web-class="blockLabelStyle"></label>
+    <block type="flappybird_create"></block>
+    
+    <sep gap="10"></sep>
+    <label text="Chơi trò chơi" web-class="blockLabelStyle"></label>
+    <block type="flappybird_play"></block>
+    <block type="flappybird_handle_button_pressed"></block>
+  </category>
+</xml>
