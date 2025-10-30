@@ -6,11 +6,23 @@ Blockly.Blocks['flappybird_create'] = {
   init: function () {
     this.jsonInit({
       "type": "flappybird_create",
-      "message0": "Khởi tạo trò chơi FlappyBird",
+      "message0": "Khởi tạo trò chơi FlappyBird: trọng lực %1 tốc độ bay %2",
+      "args0": [        
+        {
+          type: 'input_value',
+          name: 'GRAVITY',
+          check: 'Number'
+        },
+        {
+          type: 'input_value',
+          name: 'VELOCITY',
+          check: 'Number'
+        },
+      ],
       "previousStatement": null,
       "nextStatement": null,
       "colour": flappyBirdColor,
-      "tooltip": "Khởi tạo trò chơi FlappyBird với màn hình OLED",
+      "tooltip": "Khởi tạo trò chơi FlappyBird với trọng lực và tốc độ bay.",
       "helpUrl": ""
     });
   }
@@ -19,7 +31,9 @@ Blockly.Blocks['flappybird_create'] = {
 Blockly.Python['flappybird_create'] = function (block) {
   Blockly.Python.definitions_['import_flappybird'] = 'from flappybird import *';
   Blockly.Python.definitions_['init_flappybird'] = 'flappybird = FlappyBird()';
-  return '';
+  var gravity = Blockly.Python.valueToCode(block, 'GRAVITY', Blockly.Python.ORDER_ATOMIC);
+  var velocity = Blockly.Python.valueToCode(block, 'VELOCITY', Blockly.Python.ORDER_ATOMIC);
+  return 'flappybird.create(' + gravity + ', ' + velocity + ')\n';
 };
 
 // Block play

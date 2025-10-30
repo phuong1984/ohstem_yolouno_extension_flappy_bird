@@ -2,7 +2,10 @@
   <category name="FLAPPY BIRD" colour="#5d2c91" icon="tv">
     <sep gap="10"></sep>
     <label text="Khởi tạo" web-class="blockLabelStyle"></label>
-    <block type="flappybird_create"></block>
+    <block type="flappybird_create">
+      <value name="GRAVITY"><shadow type="math_number"><field name="NUM">0.2</field></shadow></value>
+      <value name="VELOCITY"><shadow type="math_number"><field name="NUM">2</field></shadow></value>
+    </block>
     
     <sep gap="10"></sep>
     <label text="Chơi trò chơi" web-class="blockLabelStyle"></label>
