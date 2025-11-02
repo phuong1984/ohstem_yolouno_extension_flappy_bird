@@ -26,11 +26,11 @@ class FlappyBird():
         self.score = 0
         self.last_pipe_time = time.ticks_ms()
         self.game_state = 0
-        self.gravity = 0.2 # tốc độ rơi tự do
-        self.fly_velocity = -2 # tốc độ bay lên
+        self.gravity = 0.12 # tốc độ rơi tự do
+        self.fly_velocity = -1.2 # tốc độ bay lên
         self.pipe_gap = 20 # Khoảng cách giữa hai phần ống
         
-    def create(self, gravity = 0.2, fly = 2):
+    def create(self, gravity = 0.12, fly = 1.2):
         self.gravity = gravity
         self.fly_velocity = -fly
         
@@ -90,7 +90,7 @@ class FlappyBird():
         if(self.game_state == 0):
             self.oled.fill(0)  # Xóa màn hình
             self.oled.text("Press button", 10, 20, 1)
-            self.oled.text("to play", 10, 40, 1)
+            self.oled.text("to play", 10, 35, 1)
             self.oled.show()
         elif(self.game_state == 1):
             # Cập nhật vị trí chim
@@ -117,11 +117,11 @@ class FlappyBird():
         elif(self.game_state == 2):
             # Hiển thị Game Over nếu thua
             self.oled.fill(0)  # Xóa màn hình
-            self.oled.text("Game Over", 30, 0, 1)
-            self.oled.text(f"Score: {self.score}", 30, 15, 1)
-            self.oled.text("Press button", 10, 40, 1)
-            self.oled.text("to replay", 10, 55, 1)
-            self.oled.show()            
+            self.oled.text("Game Over", 30, 20, 1)
+            self.oled.text(f"Score: {self.score}", 30, 35, 1)            
+            self.oled.show()
+            time.sleep(5)
+            self.game_state = 0            
         
     def handle_button_pressed(self):
         if(self.game_state == 0):            
@@ -129,5 +129,5 @@ class FlappyBird():
         elif(self.game_state == 1):            
             self.bird_velocity = self.fly_velocity
             time.sleep(0.05)  # Debounce nút
-        elif(self.game_state == 2):            
-            self.start_game()
+        #elif(self.game_state == 2):            
+            #self.start_game()
